@@ -1,7 +1,7 @@
 HKEX_Agent  
 
 The agent would receive a user prompt to inquire some aspects about one specific company across certain periods.<br>
-After analyzing the user prompt, the agent should specify key parameters, such as company name, date range.<br>
+After analyzing the user prompt, the agent should specify key parameters for collecing files with a tool and a specific prompt to apply on collected filings.<br>
 A tool would be given to the agent for fetching HKEX filings.<br>
 for each file, a specific prompt would be used to extract certain information.<br> 
 The agent then would collect all those extracted information and summarize.<br>
