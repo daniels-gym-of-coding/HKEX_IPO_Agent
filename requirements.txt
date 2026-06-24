@@ -1,7 +1,7 @@
 langchain
 langgraph
 langchain-openai
-langchain-tavily>=0.2.18
+langchain-tavily
 python-dotenv
 pandas
 openpyxl
