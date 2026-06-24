@@ -4,6 +4,10 @@
 
 LLM API Key, Tavily API Key
 
+## Data Source
+
+https://www.hkexnews.hk/index.htm
+
 ## Analyze Request
 
 The agent would receive a user prompt stored in <research_topic.txt> to inquire some aspects about one specific company across certain periods.<br><br>
