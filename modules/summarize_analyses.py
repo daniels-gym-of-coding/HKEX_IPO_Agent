@@ -8,12 +8,12 @@ from langchain_core.output_parsers import StrOutputParser
 def summarize_analyses(
     company_name: str,
     filings_dir: str = "filings",
-    output_filename: str = "final_summary.md"
+    output_filename: str = "draft_summary.md"
 ) -> None:
     """
     Reads all individual filing analysis files in the filings directory,
     concatenates their content, and calls the LLM to generate a consolidated
-    Red Flag Summary Report.
+    draft Summary Report in the parent directory.
     """
     load_dotenv()
     model = os.getenv("LLM_MODEL")
@@ -28,7 +28,8 @@ def summarize_analyses(
         current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         filings_dir = os.path.join(current_dir, filings_dir)
 
-    output_path = os.path.join(filings_dir, output_filename)
+    parent_dir = os.path.dirname(filings_dir)
+    output_path = os.path.join(parent_dir, output_filename)
 
     # Find all analysis files (excluding the final summary itself if it exists there)
     search_pattern = os.path.join(filings_dir, "*-analysis.txt")

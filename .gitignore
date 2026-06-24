@@ -17,6 +17,9 @@ __pycache__/
 .idea/
 
 # Filings
-filings/*
-!filings/filings.csv
+filings/
+
+# Generated Summaries
+draft_summary.md
+final_summary.md
 
