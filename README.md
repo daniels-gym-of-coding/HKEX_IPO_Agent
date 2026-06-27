@@ -1,8 +1,8 @@
-# HKEX_Agent  
+# HKEX_IPO_Agent  
 
 ## Prerequisites
 
-LLM API Key, Tavily API Key
+LLM API Key
 
 ## Data Source
 
@@ -10,13 +10,12 @@ https://www.hkexnews.hk/index.htm
 
 ## Analyze Request
 
-The agent would receive a user prompt stored in <research_topic.txt> to inquire some aspects about one specific company across certain periods.<br><br>
+The agent would receive a user prompt stored in <research_topic.txt> to inquire some aspects about IPO companies across certain periods.<br><br>
 After analyzing the user prompt, the agent should specify key parameters for collecing files with a tool and a specific prompt to apply on collected filings.<br><br>
-Tools would be given to the agent for fetching ticker with company name then fetching HKEX stockId with stock ticker. <br>
 
 ## Fetch Filings
 
-The agent would fetch HKEX filings list with stockId, start_date, end_date.<br>
+The agent would fetch HKEX filings list with start_date, end_date.<br>
 The agent would download HKEX filings in the list. <br>
 
 ## Analyze Filings
