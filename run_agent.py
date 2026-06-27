@@ -9,8 +9,7 @@ from modules.analyze_user_prompt import analyze_user_prompt
 from modules.get_hkex_filings import get_hkex_filings
 from modules.download_hkex_filings import download_hkex_filings
 from modules.analyze_hkex_filings import analyze_hkex_filings
-from modules.summarize_analyses import summarize_analyses
-from modules.reflect_on_summary import reflect_on_summary
+from modules.zip_analysis_results import zip_analysis_results
 
 
 # Load environment variables from .env
@@ -46,18 +45,11 @@ download_hkex_filings(csv_path="filings/filings.csv")
 print("\nRunning filing analysis...")
 analyze_hkex_filings(parsed_params=parsed, csv_path="filings/filings.csv")
 
-# Summarize analyses (draft)
-print("\nRunning consolidated summarization (draft)...")
-summarize_analyses(
+# Zip individual filing analysis results
+print("\nZipping individual filing analysis results...")
+zip_analysis_results(
     filings_dir="filings",
-    output_filename="draft_summary.md"
-)
-
-# Reflect on summary
-print("\nRunning reflection and generating final summary...")
-reflect_on_summary(
-    draft_summary_path="draft_summary.md",
-    output_filename="final_summary.md"
+    output_filename="analysis_results.zip"
 )
 
 
