@@ -1,10 +1,5 @@
 langchain
-langgraph
 langchain-openai
-langchain-tavily
 python-dotenv
-pandas
-openpyxl
 requests
 markitdown[pdf]
-

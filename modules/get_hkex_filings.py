@@ -4,13 +4,12 @@ import json
 import requests
 from datetime import datetime
 
-def get_hkex_filings(stock_id: str, start_date: str, end_date: str) -> list:
+def get_hkex_filings(start_date: str, end_date: str) -> list:
     """
-    Retrieves the list of filings for a given HKEX stock ID within a date range,
+    Retrieves the list of filings within a date range,
     saves the output to a CSV file (filings/filings.csv), and returns the parsed list.
 
     Args:
-        stock_id: The HKEX stock ID (e.g., "7609").
         start_date: The start date in YYYYMMDD format.
         end_date: The end date in YYYYMMDD format.
 
@@ -25,19 +24,16 @@ def get_hkex_filings(stock_id: str, start_date: str, end_date: str) -> list:
         ValueError: If inputs are invalid, request fails, response format is incorrect,
                     JSON parsing fails, or CSV write fails.
     """
-    if not stock_id:
-        raise ValueError("stock_id must be a non-empty string or identifier.")
     if not start_date or not end_date:
         raise ValueError("Both start_date and end_date must be provided in YYYYMMDD format.")
 
-    stock_id = str(stock_id).strip()
     start_date = str(start_date).strip()
     end_date = str(end_date).strip()
 
     url = (
         f"https://www1.hkexnews.hk/search/titleSearchServlet.do?"
         f"sortDir=0&sortByOptions=DateTime&category=0&market=SEHK&lang=zh&rowRange=1000"
-        f"&stockId={stock_id}&fromDate={start_date}&toDate={end_date}"
+        f"&fromDate={start_date}&toDate={end_date}"
     )
 
     headers = {
@@ -48,21 +44,21 @@ def get_hkex_filings(stock_id: str, start_date: str, end_date: str) -> list:
         response = requests.get(url, headers=headers, timeout=15)
         response.raise_for_status()
     except Exception as e:
-        raise ValueError(f"Failed to fetch filings for stockId '{stock_id}' due to network/HTTP error: {e}")
+        raise ValueError(f"Failed to fetch filings due to network/HTTP error: {e}")
 
     try:
         data = response.json()
     except Exception as e:
-        raise ValueError(f"Failed to parse JSON response from HKEX API for stockId '{stock_id}': {e}. Raw response: {response.text[:200]}")
+        raise ValueError(f"Failed to parse JSON response from HKEX API: {e}. Raw response: {response.text[:200]}")
 
     result_str = data.get("result")
     if result_str is None:
-        raise ValueError(f"Missing 'result' key in HKEX API response for stockId '{stock_id}'")
+        raise ValueError("Missing 'result' key in HKEX API response")
 
     try:
         filings_list = json.loads(result_str)
     except Exception as e:
-        raise ValueError(f"Failed to parse inner 'result' JSON string for stockId '{stock_id}': {e}. Raw 'result': {result_str[:200]}")
+        raise ValueError(f"Failed to parse inner 'result' JSON string: {e}. Raw 'result': {result_str[:200]}")
 
     if not isinstance(filings_list, list):
         raise ValueError(f"Expected inner 'result' to be a JSON list, but got {type(filings_list)}")

@@ -6,7 +6,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 def summarize_analyses(
-    company_name: str,
     filings_dir: str = "filings",
     output_filename: str = "draft_summary.md"
 ) -> None:
@@ -73,13 +72,13 @@ def summarize_analyses(
     # Decouple prompt into components as required by project rules
     core_instruction = (
         "You are a professional research analyst.\n"
-        "Your task is to review a series of individual filing analyses for a company and synthesize them into a single, "
+        "Your task is to review a series of individual filing analyses and synthesize them into a single, "
         "cohesive, high-level summary report."
     )
 
     output_format_instruction = (
         "Provide a professional Markdown report structured as follows:\n"
-        "1. # Executive Summary Report for {company_name}\n"
+        "1. # Executive Summary Report\n"
         "2. ## Executive Summary: A high-level assessment of the overall findings and key takeaways based on all filings.\n"
         "3. ## Consolidated Summary Table: A table listing the key topics/criteria analyzed, their consolidated assessments or status, and a brief rationale.\n"
         "4. ## Detailed Findings: Group and synthesize all findings into the key thematic categories or criteria that were analyzed in the individual filings. Under each category, consolidate the findings from all filings, quoting or referencing specific filing dates and details where appropriate.\n"
@@ -88,7 +87,6 @@ def summarize_analyses(
     )
 
     input_information = (
-        "Company Name: {company_name}\n\n"
         "Individual Filing Analyses:\n{analyses_text}"
     )
 
@@ -108,7 +106,6 @@ def summarize_analyses(
 
     try:
         summary_report = chain.invoke({
-            "company_name": company_name,
             "analyses_text": analyses_text
         })
     except Exception as e:

@@ -5,7 +5,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 def reflect_on_summary(
-    company_name: str,
     draft_summary_path: str,
     output_filename: str = "final_summary.md"
 ) -> None:
@@ -67,7 +66,7 @@ def reflect_on_summary(
 
     output_format_instruction = (
         "Provide a polished, final Markdown report. Keep the key structured sections from the draft:\n"
-        "1. # Executive Summary Report for {company_name}\n"
+        "1. # Executive Summary Report\n"
         "2. ## Executive Summary\n"
         "3. ## Consolidated Summary Table\n"
         "4. ## Detailed Findings\n"
@@ -77,7 +76,6 @@ def reflect_on_summary(
     )
 
     input_information = (
-        "Company Name: {company_name}\n\n"
         "Draft Summary Content:\n{draft_summary_content}"
     )
 
@@ -97,7 +95,6 @@ def reflect_on_summary(
 
     try:
         final_report = chain.invoke({
-            "company_name": company_name,
             "draft_summary_content": draft_summary_content
         })
     except Exception as e:

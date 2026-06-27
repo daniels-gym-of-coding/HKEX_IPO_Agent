@@ -1,1 +1,7 @@
-Research hang lung for the latest 365 days. Summarize.
+Analyze HKEX application proofs for last Sunday to this Friday.
+These factors should be included in the analysis.
+1.the official company name
+2.the foundation year, the headquarter of the company, and where its operates
+3.the core product or service, and the competitive landscape
+4.the historic revenue and profit, and the trajectory
+5.the purpose of raising capital, and the risk of investing

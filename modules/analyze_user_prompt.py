@@ -8,7 +8,7 @@ from langchain_core.output_parsers import JsonOutputParser
 
 def analyze_user_prompt(prompt: str) -> dict:
     """
-    Analyzes the user prompt and extracts company name, start date, and end date using
+    Analyzes the user prompt and extracts start date and end date using
     JsonOutputParser.
     Returns a dictionary of parameters. If an error occurs, returns an empty dictionary.
     """
@@ -39,7 +39,6 @@ def analyze_user_prompt(prompt: str) -> dict:
         
         output_format_instruction = (
             "Return a JSON object with the following fields:\n"
-            "- \"company_name\": Name of the specific company to research.\n"
             "- \"start_date\": The start date of research in YYYYMMDD format.\n"
             "- \"end_date\": The end date of research in YYYYMMDD format. Default to {today_str} if not specified.\n"
             "- \"filing_analyze_prompt\": A formulated prompt targeting the user's specific questions or criteria to be applied when analyzing each individual collected company filing.\n\n"
