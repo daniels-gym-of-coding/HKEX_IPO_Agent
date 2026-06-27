@@ -22,7 +22,10 @@ The agent would download HKEX filings in the list. <br>
 
 for each file, the specific prompt would be used to extract certain information.<br> 
 
-## Summarize, Reflect
+## Zip filing analysis
 
-The agent then would collect all those extracted information and summarize.<br>
-The agent would reflect on the draft summary and generate the final summary.<br>
+The agent would zip up all filing analysis results.
+
+## Doubao Prompt
+
+
