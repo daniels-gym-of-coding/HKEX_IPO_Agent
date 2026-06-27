@@ -28,4 +28,5 @@ The agent would zip up all filing analysis results.
 
 ## Doubao Prompt
 
+生成三张小红书图片（最significant的三家公司分析总结，一个公司一张图片），小红书正文（列出所有公司，包括公司名字、filing date），一份pdf报告按照significance依次列出各个公司的分析概要。
 
