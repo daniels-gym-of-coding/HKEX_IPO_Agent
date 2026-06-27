@@ -11,7 +11,7 @@ https://www.hkexnews.hk/index.htm
 ## Analyze Request
 
 The agent would receive a user prompt stored in <research_topic.txt> to inquire some aspects about IPO companies across certain periods.<br><br>
-After analyzing the user prompt, the agent should specify key parameters for collecing files with a tool and a specific prompt to apply on collected filings.<br><br>
+After analyzing the user prompt, the agent should specify key parameters for collecing filings and a specific prompt to apply on collected filings.<br><br>
 
 ## Fetch Filings
 
