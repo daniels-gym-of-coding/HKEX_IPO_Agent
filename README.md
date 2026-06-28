@@ -1,9 +1,5 @@
 # HKEX_IPO_Agent  
 
-## To Refine
-
-Improve instructions on Agent prompts and Doubao Prompts
-
 ## Prerequisites
 
 LLM API Key
